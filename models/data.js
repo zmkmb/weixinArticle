@@ -12,6 +12,7 @@ var data = function(filePath){
 		var obj = {};
 		var readNum = 0;
 		var time = 0;
+		//按行读
 		rd.on('line', function(line) {
 			if(/^\{.*\}$/i.test(line)){
 				if(data.length > 0){

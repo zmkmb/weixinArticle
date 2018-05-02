@@ -10,13 +10,20 @@ router.use('/', function(req, res, next) {
 			console.log(err);
 			return;
 		}
-		files.forEach(function(file){
+		var articleInfoList = [];
+		files.forEach(function(file,index){
 			data(logPath + '/' + file).then(function(data){
-				res.json(data);
+				data.title = file;
+				if(index >= files.length-1){
+					return res.json(articleInfoList);
+				}
+				articleInfoList.push(data);
 			}).catch(function(e){
 				console.log(e)
 			})
 		})
+
+
 	})
 
 })
